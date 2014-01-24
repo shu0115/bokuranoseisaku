@@ -12,7 +12,7 @@ class TopController < ApplicationController
       end
 
       # 最新10件取得
-      results = client.search("#ぼくらの政策 -rt", since_id: 0, lang: "ja", result_type: "recent").first(10)
+      results = client.search("#ぼくらの政策 OR #僕らの政策 -rt", since_id: 0, lang: "ja", result_type: "recent").first(10)
       # result = client.search("#ぼくらの政策 -rt", since_id: 0, max_id: (426600690710884352 - 1), lang: "ja", result_type: "recent").first
 
       results.each do |result|
