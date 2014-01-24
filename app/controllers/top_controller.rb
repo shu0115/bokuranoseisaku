@@ -2,7 +2,7 @@ class TopController < ApplicationController
   skip_before_filter :authenticate
 
   # トップ
-  def index
+  def index(page)
     if current_user.present?
       client = Twitter::REST::Client.new do |config|
         config.consumer_key        = Settings.twitter_key
@@ -29,6 +29,6 @@ class TopController < ApplicationController
       end
     end
 
-    @tweets = Tweet.order(tweet_at: :desc)
+    @tweets = Tweet.order(tweet_at: :desc).page(page).per(30)
   end
 end
