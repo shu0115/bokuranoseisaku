@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20000102000000) do
+ActiveRecord::Schema.define(version: 20140124055314) do
 
   create_table "authentications", force: true do |t|
     t.integer  "user_id"
@@ -30,6 +30,18 @@ ActiveRecord::Schema.define(version: 20000102000000) do
   end
 
   add_index "authentications", ["user_id"], name: "index_authentications_on_user_id"
+
+  create_table "tweets", force: true do |t|
+    t.integer  "tweet_id",       limit: 8
+    t.string   "twitter_uid"
+    t.string   "screen_name"
+    t.text     "content"
+    t.datetime "tweet_at"
+    t.integer  "retweet_count"
+    t.integer  "favorite_count"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "name"

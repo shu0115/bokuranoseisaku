@@ -1,2 +1,25 @@
 %h1
-  Welcome to #{Settings.app_name}.
+  = link_to "#ぼくらの政策", root_path
+%h3
+  = link_to "Twitterで見る", 'https://twitter.com/search?q=%23%E3%81%BC%E3%81%8F%E3%82%89%E3%81%AE%E6%94%BF%E7%AD%96%20OR%20%23%E5%83%95%E3%82%89%E3%81%AE%E6%94%BF%E7%AD%96&src=typd&f=realtime', target: '_blank'
+
+%table
+  %tr
+    %th ユーザ／ツイートID
+    %th ツイート
+    %th リツイート数
+    %th お気に入り数
+    %th ツイート日時
+
+  - @tweets.each do |tweet|
+    %tr
+      %td
+        = link_to "@#{tweet.screen_name}", "https://twitter.com/#{tweet.screen_name}", target: '_blank'
+        %br
+        = tweet.tweet_id
+      %td= tweet.content
+      %td= tweet.retweet_count
+      %td= tweet.favorite_count
+      %td{ nowrap: true }= link_to tweet.tweet_at.strftime("%Y年%m月%d日 %H:%M"), "https://twitter.com/otonaoto/status/#{tweet.tweet_id}", target: '_blank'
+
+%br

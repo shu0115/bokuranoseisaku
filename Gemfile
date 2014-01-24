@@ -45,40 +45,41 @@ end
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-gem "minimum-omniauth-scaffold"
-gem "action_args"
-gem "html5_validators"
-gem "puma"
-gem "kaminari"
-gem "rails_config"
-gem "tapp"
-gem "awesome_print"
-gem "i18n_generators"
-gem "exception_notification"
-gem "haml-rails"
-gem "redcarpet"
-gem "coderay"
+gem 'minimum-omniauth-scaffold'
+gem 'action_args'
+gem 'html5_validators'
+gem 'puma'
+gem 'kaminari'
+gem 'rails_config'
+gem 'tapp'
+gem 'awesome_print'
+gem 'i18n_generators'
+gem 'exception_notification'
+gem 'haml-rails'
+gem 'redcarpet'
+gem 'coderay'
+gem 'twitter'
 
 group :development do
-  gem "heroku_san"
-  gem "pry-rails"
-  gem "better_errors"
-  gem "binding_of_caller"
-  gem "erb2haml"
-  gem "quiet_assets"
-  gem "colorize_unpermitted_parameters"
-  gem "rails-flog-disable-sql-format", require: "flog"
-  gem "bullet"
+  gem 'heroku_san'
+  gem 'pry-rails'
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'erb2haml'
+  gem 'quiet_assets'
+  gem 'colorize_unpermitted_parameters'
+  gem 'rails-flog-disable-sql-format', require: 'flog'
+  gem 'bullet'
 end
 
 group :development, :test do
-  gem "sqlite3"
-  gem "rspec-rails"
+  gem 'sqlite3'
+  gem 'rspec-rails'
 end
 
 group :production do
-  gem "rails_12factor"
-  gem "pg"
-  gem "newrelic_rpm"
+  gem 'rails_12factor'
+  gem 'pg'
+  gem 'newrelic_rpm'
   gem 'bugsnag'
 end
