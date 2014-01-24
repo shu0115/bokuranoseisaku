@@ -1,0 +1,16 @@
+# Provider Page
+twitter_page:  "https://twitter.com/"
+facebook_page: "https://www.facebook.com/"
+github_page:   "https://github.com/"
+
+# アプリケーション名
+app_name: "bokuranoseisaku"
+
+# プログラマTwitterID
+programmer_twitter_id: "shu_0115"
+
+# デザイナーTwitterID
+designer_twitter_id: "DESIGNER_TWITTER_ID"
+
+# 曜日
+weekday: ["日", "月", "火", "水", "木", "金", "土"]
