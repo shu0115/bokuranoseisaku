@@ -29,6 +29,6 @@ class TopController < ApplicationController
       end
     end
 
-    @tweets = Tweet.order(tweet_at: :desc).page(page).per(30)
+    @tweets = Tweet.order(tweet_at: :desc).page(page).per(50)
   end
 end
