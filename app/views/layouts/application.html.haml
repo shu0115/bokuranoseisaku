@@ -5,6 +5,7 @@
     = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tags
+    %meta{ 'http-equiv' => "refresh", content: "60;URL='/'"}
   %body{ 'data-no-turbolink' => true }
     = link_to Settings.app_name, :root
     - if signed_in?
