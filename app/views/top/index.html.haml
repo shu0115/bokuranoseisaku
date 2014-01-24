@@ -20,7 +20,7 @@
         = link_to "@#{tweet.screen_name}", "https://twitter.com/#{tweet.screen_name}", target: '_blank'
         %br
         = tweet.tweet_id
-      %td= tweet.content
+      %td= raw Rinku.auto_link(h(tweet.content), :all, 'target="_blank"')
       %td= tweet.retweet_count
       %td= tweet.favorite_count
       %td{ nowrap: true }= link_to tweet.tweet_at.strftime("%Y年%m月%d日 %H:%M"), "https://twitter.com/otonaoto/status/#{tweet.tweet_id}", target: '_blank'

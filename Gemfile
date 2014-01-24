@@ -59,6 +59,7 @@ gem 'haml-rails'
 gem 'redcarpet'
 gem 'coderay'
 gem 'twitter'
+gem 'rinku'
 
 group :development do
   gem 'heroku_san'
