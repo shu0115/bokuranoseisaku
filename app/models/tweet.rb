@@ -12,7 +12,6 @@ class Tweet < ActiveRecord::Base
           config.consumer_secret     = Settings.twitter_secret
         end
 
-        # 最新10件取得
         results = client.search("#ぼくらの政策 OR #僕らの政策 -rt", lang: "ja", result_type: "recent").to_a
 
         Tweet.create_tweets(results)
@@ -21,7 +20,25 @@ class Tweet < ActiveRecord::Base
       end
     end
 
-    # ツイートを保存
+    ## 過去ツイート取得
+    # ruby bin/rails runner "Tweet.fetch_past_tweets"
+    def fetch_past_tweets
+      begin
+        client = Twitter::REST::Client.new do |config|
+          config.consumer_key        = Settings.twitter_key
+          config.consumer_secret     = Settings.twitter_secret
+        end
+
+        results = client.search("#ぼくらの政策 OR #僕らの政策 -rt", since_id: 0, max_id: (Tweet.order(tweet_at: :asc).first.tweet_id - 1), lang: "ja", result_type: "recent").to_a
+
+        Tweet.create_tweets(results)
+        puts "[ ---------- results.length ---------- ]" ; results.length.tapp ;
+      rescue => e
+        puts "[ ---------- e ---------- ]" ; e.tapp ;
+      end
+    end
+
+    ## ツイートを保存
     def create_tweets(results)
       results.each.with_index(1) do |result, index|
         # ツイート保存
