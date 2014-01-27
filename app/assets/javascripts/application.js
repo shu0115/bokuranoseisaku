@@ -18,4 +18,10 @@
 $(function(){
   // aタグにtarget=blank指定
   $('.target_blank a').attr('target' , '_blank');
+
+  // aタグ用リモート処理
+  $(document).on('ajax:success', 'a[data-update-target]', function(evt, data) {
+    var target = $(this).data('update-target');
+    $('#' + target).html(data);
+  });
 });

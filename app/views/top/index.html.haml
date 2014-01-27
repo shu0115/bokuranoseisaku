@@ -1,13 +1,16 @@
-%h1
-  = link_to "#ぼくらの政策", root_path
-%h3
-  = link_to "Twitterで見る", 'https://twitter.com/search?q=%23%E3%81%BC%E3%81%8F%E3%82%89%E3%81%AE%E6%94%BF%E7%AD%96%20OR%20%23%E5%83%95%E3%82%89%E3%81%AE%E6%94%BF%E7%AD%96&src=typd&f=realtime', target: '_blank'
+%h1= link_to "#ぼくらの政策", root_path
+%h3= link_to "Twitterで見る", 'https://twitter.com/search?q=%23%E3%81%BC%E3%81%8F%E3%82%89%E3%81%AE%E6%94%BF%E7%AD%96%20OR%20%23%E5%83%95%E3%82%89%E3%81%AE%E6%94%BF%E7%AD%96&src=typd&f=realtime', target: '_blank'
+%h2= link_to "Twitterでログイン", "/auth/twitter"
 
 - # 検索フォーム
 = search_form_for @search, url: root_path do |f|
   %div.field
     = f.text_field :content_cont, size: 50, placeholder: 'スペース区切りでAND検索が出来ます'
     = f.submit "検索", data: { disable_with: '検索' }
+
+%h3
+  = link_to '新着', root_path(sort: 'new')
+  = link_to '人気', root_path(sort: 'popular')
 
 / ページング
 = render partial: '/top/pagination', locals: { list: @tweets }
@@ -16,6 +19,7 @@
   %tr
     %th ユーザ／ツイートID
     %th ツイート
+    %th 評価
     %th リツイート数
     %th お気に入り数
     %th ツイート日時
@@ -27,6 +31,8 @@
         %br
         = tweet.tweet_id
       %td= raw simple_format Rinku.auto_link(h(tweet.content), :all, 'target="_blank"') rescue tweet.content
+      %td{ id: "reputation_#{tweet.id}", nowrap: true }
+        = render partial: '/top/reputation', locals: { tweet: tweet }
       %td= tweet.retweet_count
       %td= tweet.favorite_count
       %td{ nowrap: true }= link_to tweet.tweet_at.strftime("%Y年%m月%d日 %H:%M"), "https://twitter.com/otonaoto/status/#{tweet.tweet_id}", target: '_blank'

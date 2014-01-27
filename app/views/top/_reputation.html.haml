@@ -1,0 +1,17 @@
+- if current_user.present?
+  - if tweet.good?(current_user)
+    = link_to "×Good", cancel_good_reputations_path(tweet_id: tweet.id), data: { method: 'post', remote: true, update_target: "reputation_#{tweet.id}" }
+  - else
+    = link_to "Good", good_reputations_path(tweet_id: tweet.id), data: { method: 'post', remote: true, update_target: "reputation_#{tweet.id}" }
+
+  = "x#{tweet.good_count}"
+
+  - if tweet.bad?(current_user)
+    = link_to "×Bad", cancel_bad_reputations_path(tweet_id: tweet.id), data: { method: 'post', remote: true, update_target: "reputation_#{tweet.id}" }
+  - else
+    = link_to "Bad", bad_reputations_path(tweet_id: tweet.id), data: { method: 'post', remote: true, update_target: "reputation_#{tweet.id}" }
+
+  = "x#{tweet.bad_count}"
+- else
+  = "Good x#{tweet.good_count}"
+  = "Bad x#{tweet.bad_count}"

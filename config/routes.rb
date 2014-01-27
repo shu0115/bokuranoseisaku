@@ -1,5 +1,13 @@
 Bokuranoseisaku::Application.routes.draw do
   root to: 'top#index'
+  resources :reputations, only: [] do
+    collection do
+      post 'good'
+      post 'cancel_good'
+      post 'bad'
+      post 'cancel_bad'
+    end
+  end
 
   # For OmniAuth
   get "/auth/:provider/callback" => "sessions#callback"

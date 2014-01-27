@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140124055314) do
+ActiveRecord::Schema.define(version: 20140127052246) do
 
   create_table "authentications", force: true do |t|
     t.integer  "user_id"
@@ -31,6 +31,17 @@ ActiveRecord::Schema.define(version: 20140124055314) do
 
   add_index "authentications", ["user_id"], name: "index_authentications_on_user_id"
 
+  create_table "reputations", force: true do |t|
+    t.string   "type"
+    t.integer  "user_id"
+    t.integer  "tweet_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "reputations", ["tweet_id"], name: "index_reputations_on_tweet_id"
+  add_index "reputations", ["user_id"], name: "index_reputations_on_user_id"
+
   create_table "tweets", force: true do |t|
     t.integer  "tweet_id",       limit: 8
     t.string   "twitter_uid"
@@ -41,6 +52,8 @@ ActiveRecord::Schema.define(version: 20140124055314) do
     t.integer  "favorite_count"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "good_count",               default: 0
+    t.integer  "bad_count",                default: 0
   end
 
   create_table "users", force: true do |t|

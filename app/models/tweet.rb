@@ -1,4 +1,11 @@
 class Tweet < ActiveRecord::Base
+  def good?(user)
+    Reputation::GoodReputation.where(tweet_id: self.id, user_id: user.id).exists?
+  end
+
+  def bad?(user)
+    Reputation::BadReputation.where(tweet_id: self.id, user_id: user.id).exists?
+  end
 
   private
 
