@@ -61,6 +61,7 @@ gem 'coderay'
 gem 'twitter'
 gem 'rinku'
 gem 'ransack'
+gem 'acts-as-taggable-on'
 
 group :development do
   gem 'heroku_san'

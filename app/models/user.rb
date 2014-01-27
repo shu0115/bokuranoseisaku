@@ -1,6 +1,10 @@
 class User < ActiveRecord::Base
   has_many :authentications
 
+  def admin?
+    self.authentications.first.try(:uid) == '14369656'
+  end
+
   private
 
   # ユーザ作成
