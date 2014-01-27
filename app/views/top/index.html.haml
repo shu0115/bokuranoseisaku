@@ -6,7 +6,7 @@
 - # 検索フォーム
 = search_form_for @search, url: root_path do |f|
   %div.field
-    = f.text_field :content_cont, size: 50
+    = f.text_field :content_cont, size: 50, placeholder: 'スペース区切りでAND検索が出来ます'
     = f.submit "検索", data: { disable_with: '検索' }
 
 / ページング
