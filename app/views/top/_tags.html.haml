@@ -3,6 +3,7 @@
   - if current_user.present? and tag.user_id == current_user.id
     = link_to '×', tag_path(tag, tweet_id: tweet.id), remote: true, data: { 'update-target' => "tags_#{tweet.id}", confirm: "「#{tag.name}」の紐付けを解除します。よろしいですか？" }, method: :delete
 
-= form_tag tags_path(tweet_id: tweet.id), remote: true, data: { 'update-target' => "tags_#{tweet.id}" } do
-  = text_field_tag :tag_name
-  = submit_tag '追加', data: { disable_with: '追加' }
+- if current_user.present?
+  = form_tag tags_path(tweet_id: tweet.id), remote: true, data: { 'update-target' => "tags_#{tweet.id}" } do
+    = text_field_tag :tag_name
+    = submit_tag '追加', data: { disable_with: '追加' }
