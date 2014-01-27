@@ -20,8 +20,10 @@
     %th ユーザ／ツイートID
     %th ツイート
     %th 評価
-    %th リツイート数
-    %th お気に入り数
+    %th
+      RT数
+      %br
+      Fav数
     %th ツイート日時
 
   - @tweets.each do |tweet|
@@ -33,8 +35,10 @@
       %td= raw simple_format Rinku.auto_link(h(tweet.content), :all, 'target="_blank"') rescue tweet.content
       %td{ id: "reputation_#{tweet.id}", nowrap: true }
         = render partial: '/top/reputation', locals: { tweet: tweet }
-      %td= tweet.retweet_count
-      %td= tweet.favorite_count
+      %td
+        = tweet.retweet_count
+        %br
+        = tweet.favorite_count
       %td{ nowrap: true }= link_to tweet.tweet_at.strftime("%Y年%m月%d日 %H:%M"), "https://twitter.com/otonaoto/status/#{tweet.tweet_id}", target: '_blank'
 
 / ページング
