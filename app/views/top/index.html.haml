@@ -15,7 +15,7 @@
     %th ツイート日時
 
   - @tweets.each do |tweet|
-    %tr
+    %tr.target_blank
       %td
         = link_to "@#{tweet.screen_name}", "https://twitter.com/#{tweet.screen_name}", target: '_blank'
         %br
