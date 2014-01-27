@@ -3,6 +3,12 @@
 %h3
   = link_to "Twitterで見る", 'https://twitter.com/search?q=%23%E3%81%BC%E3%81%8F%E3%82%89%E3%81%AE%E6%94%BF%E7%AD%96%20OR%20%23%E5%83%95%E3%82%89%E3%81%AE%E6%94%BF%E7%AD%96&src=typd&f=realtime', target: '_blank'
 
+- # 検索フォーム
+= search_form_for @search, url: root_path do |f|
+  %div.field
+    = f.text_field :content_cont, size: 50
+    = f.submit "検索", data: { disable_with: '検索' }
+
 / ページング
 = render partial: '/top/pagination', locals: { list: @tweets }
 

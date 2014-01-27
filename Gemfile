@@ -60,6 +60,7 @@ gem 'redcarpet'
 gem 'coderay'
 gem 'twitter'
 gem 'rinku'
+gem 'ransack'
 
 group :development do
   gem 'heroku_san'
