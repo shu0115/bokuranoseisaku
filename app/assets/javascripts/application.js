@@ -24,4 +24,11 @@ $(function(){
     var target = $(this).data('update-target');
     $('#' + target).html(data);
   });
+
+  // リモートフォーム用
+  // $('form[data-update-target]').live('ajax:success', function(evt, data) {
+  $(document).on('ajax:success', 'form[data-update-target]', function(evt, data) {
+    var target = $(this).data('update-target');
+    $('#' + target).html(data);
+  });
 });

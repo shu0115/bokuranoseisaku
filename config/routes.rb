@@ -9,6 +9,8 @@ Bokuranoseisaku::Application.routes.draw do
     end
   end
 
+  resources :tags, only: [:create, :destroy]
+
   # For OmniAuth
   get "/auth/:provider/callback" => "sessions#callback"
   get "/auth/failure"            => "sessions#failure"

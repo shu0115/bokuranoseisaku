@@ -14,3 +14,5 @@ designer_twitter_id: "DESIGNER_TWITTER_ID"
 
 # 曜日
 weekday: ["日", "月", "火", "水", "木", "金", "土"]
+
+per_page: 30
