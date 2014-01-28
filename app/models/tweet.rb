@@ -22,7 +22,7 @@ class Tweet < ActiveRecord::Base
           config.consumer_secret     = Settings.twitter_secret
         end
 
-        results = client.search("#ぼくらの政策 OR #僕らの政策 -rt", lang: "ja", result_type: "recent").to_a
+        results = client.search(Settings.search_text, lang: "ja", result_type: "recent").to_a
 
         Tweet.create_tweets(results)
       rescue => e
@@ -39,7 +39,7 @@ class Tweet < ActiveRecord::Base
           config.consumer_secret     = Settings.twitter_secret
         end
 
-        results = client.search("#ぼくらの政策 OR #僕らの政策 -rt", since_id: 0, max_id: (Tweet.order(tweet_at: :asc).first.tweet_id - 1), lang: "ja", result_type: "recent").to_a
+        results = client.search(Settings.search_text, since_id: 0, max_id: (Tweet.order(tweet_at: :asc).first.tweet_id - 1), lang: "ja", result_type: "recent").to_a
 
         Tweet.create_tweets(results)
         puts "[ ---------- results.length ---------- ]" ; results.length.tapp ;
